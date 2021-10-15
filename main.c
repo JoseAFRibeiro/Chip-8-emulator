@@ -1,11 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
-
-#include "CPU.h"
+#include "ROMInput.h"
 #include "Machine.h"
+
 
 int main()
 {
-    struct Chip8_CPU cpu;
-    initialize();
+    printf("Starting Chip-8 emulator\n");
+
+    /*if(argc == 0)
+    {
+        printf("Incorrect program usage. Please provide a path to a ROM file");
+        return 1;
+    }*/
+    startMachine();
+    return 0;
 }

@@ -1,0 +1,30 @@
+# depslib dependency file v1.0
+1634309358 source:c:\users\casa\desktop\programas\c\new chip-8\main.c
+	<stdio.h>
+	<stdlib.h>
+	"ROMInput.h"
+	"Machine.h"
+
+1634296905 c:\users\casa\desktop\programas\c\new chip-8\cpu.h
+	<stdint-gcc.h>
+
+1634298209 c:\users\casa\desktop\programas\c\new chip-8\machine.h
+
+1634320551 source:c:\users\casa\desktop\programas\c\new chip-8\machine.c
+	"CPU.h"
+	"ROMInput.h"
+
+1634297988 c:\users\casa\desktop\programas\c\new chip-8\bios.h
+
+1634322075 source:c:\users\casa\desktop\programas\c\new chip-8\routines.c
+	<stdio.h>
+	"BIOS.h"
+	"CPU.h"
+	"ROMInput.h"
+
+1634322025 c:\users\casa\desktop\programas\c\new chip-8\rominput.h
+
+1634321983 source:c:\users\casa\desktop\programas\c\new chip-8\rominput.c
+	<stdio.h>
+	<stdlib.h>
+

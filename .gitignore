@@ -35,6 +35,7 @@
 *.i*86
 *.x86_64
 *.hex
+*.ch8
 
 # Debug files
 *.dSYM/
@@ -52,5 +53,5 @@ Mkfile.old
 dkms.conf
 #IDE files
 .vscode
-.layout
-.cbp
+*.layout
+*.cbp
