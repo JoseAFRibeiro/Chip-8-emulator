@@ -3,16 +3,6 @@
 #include "BIOS.h"
 #include "CPU.h"
 #include "ROMInput.h"
-//definitions
-#define FONT_ARRAY_SIZE  sizeof(font)/sizeof(font[0])
-#define PROGRAM_START_ADDRESS 0x200
-//functions
-/*void zeroRegs(chip proc);
-void clearRAM(unsigned char RAM[]);
-void loadFont(unsigned char RAM[]);
-void loadProgram();
-void reset();
-void initialize();*/
 
 void zeroRegs(chip proc)
 {
@@ -22,6 +12,7 @@ void zeroRegs(chip proc)
     }
     proc.buzzer = 0;
     proc.delay = 0;
+    proc.stkPtr = 0;
 }
 
 void clearRAM(unsigned char RAM[])
@@ -49,16 +40,8 @@ void initialize(chip proc, unsigned char RAM[])
 
 void loadProgram(char *programName, unsigned char RAM[])
 {
-    int programSize;
-    int b = 0;
-    char *programBuffer;
-    fileReader(programName, &programSize, &programBuffer);
 
-    for(int i = PROGRAM_START_ADDRESS; i < (programSize + PROGRAM_START_ADDRESS) ; i++)
-    {
-        RAM[i] = programBuffer[b];
-        b++;
-    }
+    fileReader(programName, RAM, PROGRAM_START_ADDRESS);
     freeFile();
 }
 
