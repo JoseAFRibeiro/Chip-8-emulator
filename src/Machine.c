@@ -8,7 +8,7 @@
 #include "Machine.h"
 
 //macros
-#define GET_OPCODE_MSB(opcode) opcode >> 8 
+#define GET_OPCODE_MSB(opcode) opcode >> 12 
 //funcions
 void initialize();
 void emulateCycle();
@@ -16,7 +16,6 @@ void emulateCycle();
 chip proc;
 
 char *testFile = "./ROM/Landing.ch8";
-short instruction = 0x0000;
 
 void startMachine()
 {
@@ -33,23 +32,23 @@ void emulateCycle()
     {
 
     proc.instruction = RAM[proc.programCounter];
-    proc.instruction = instruction<<8;   
-    proc.instruction = instruction | RAM[proc.programCounter + 1];
+    proc.instruction = proc.instruction << 8;   
+    proc.instruction = proc.instruction | RAM[proc.programCounter + 1];
     /*when the cycle ends, move the PC by 2 ram locations
     0x200     instruction
     0x200 + 1 data
     0x200 + 2 instruction
     0x200 + 3 data
     */
-    proc.programCounter += 2;
-    //if allowed to run ad eternum it will eventually ty to read outside the RAM array and segfault... so don't do that
+
     #ifdef DEBUG 
         printf("%x\n", proc.instruction);
     #endif
     //get the significan't bit only bit shifting
-    opcodeLUT[GET_OPCODE_MSB(proc.instruction)](proc);
+    opcodeLUT[GET_OPCODE_MSB(proc.instruction)](&proc);
 
-
+    proc.programCounter += 2;
+    //if allowed to run ad eternum it will eventually ty to read outside the RAM array and segfault... so don't do that
     }
 
 }

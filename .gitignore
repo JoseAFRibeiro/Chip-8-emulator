@@ -55,5 +55,4 @@ dkms.conf
 .vscode
 *.layout
 *.cbp
-.code-workspace
-
+*.code-workspace

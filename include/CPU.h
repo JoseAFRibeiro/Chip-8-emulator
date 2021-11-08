@@ -8,10 +8,12 @@ typedef struct Chip8_CPU
     uint16_t stack[16];
     uint16_t stkPtr;
     uint16_t programCounter;
+    uint16_t instruction;
+    uint16_t I;
     uint8_t V[0xF];
     uint8_t buzzer, timer;
-    unsigned char delay, sound;
-    uint16_t instruction;
+    uint8_t delay, sound;
+    
 
 
 }chip;
